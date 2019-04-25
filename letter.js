@@ -13,10 +13,15 @@ function Letter(char){
     },
     this.check = function(guess){
         var guess = guess;
+        var correct = false;
         //set guessed to true if guess matches letter
         if (this.letter == guess){
             this.guessed = true;
+            console.log(true);
+            correct = true;
+
         }
+        return correct;
     }
 }
 module.exports = Letter;
