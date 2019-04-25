@@ -53,9 +53,15 @@ function getGuess() {
         console.log("Game Over");
         inquirer.prompt([
             {
-                
+                type: "confirm",
+                name: "replay",
+                message: "Play again?"
             }
-        ])
+        ]).then(function (res){
+            if(response.replay){
+                startGame();
+            }
+        })
     }
     else {
         inquirer.prompt([
