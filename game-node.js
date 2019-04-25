@@ -48,9 +48,14 @@ function startGame() {
 
 }
 function getGuess() {
-    console.log("getguess");
+
     if (!playing) {
         console.log("Game Over");
+        inquirer.prompt([
+            {
+                
+            }
+        ])
     }
     else {
         inquirer.prompt([
@@ -61,14 +66,21 @@ function getGuess() {
             }
         ]).then(function (res) {
             var guess = res.guess;
-            console.log("Guesses left: "+guessesRemaining);
-            console.log("Already guessed: "+alreadyGuessed);
-            if(!alreadyGuessed.includes(guess)){
+
+            var correctGuess = currentWord.check(guess);
+
+            if(!alreadyGuessed.includes(guess) && !correctGuess){   
                 guessesRemaining--;
             }
             alreadyGuessed.push(guess);
-            currentWord.check(guess);
             currentWord.update();
+            console.log("Guesses left: "+guessesRemaining);
+            console.log("Already guessed: "+alreadyGuessed);
+
+            if(currentWord.cleared){
+                console.log("You got it!");
+                playing = false;
+            }
             if (guessesRemaining < 1){
                 console.log("You're out of guesses!");
                 playing = false;
