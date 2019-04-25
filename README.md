@@ -1,4 +1,4 @@
-# whos-that-pokemon
+# Who's That Pokemon? (node app)
 A hangman-style pokemon guessing game that runs in node.
 ## Installation
 All dependencies are included in package.json. Just run npm install and you're ready to go.
