@@ -51,6 +51,11 @@ function getGuess() {
 
     if (!playing) {
         console.log("Game Over");
+         playing = false;
+ currentWord = "";
+ alreadyGuessed = [];
+ guessesRemaining = 9;
+
         inquirer.prompt([
             {
                 type: "confirm",
@@ -58,7 +63,7 @@ function getGuess() {
                 message: "Play again?"
             }
         ]).then(function (res){
-            if(response.replay){
+            if(res.replay){
                 startGame();
             }
         })
